@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 import api, { abortController } from "@/utils/api";
 
 const useApiMutationID = <Variables = any, Response = any, Error = any>(
-    type: "patch" | "delete",
+    type: "patch" | "delete" | "get",
     url = "",
     options: UseMutationOptions<AxiosResponse<Response>, Error, Variables> = {},
     params: object = {}
@@ -11,8 +11,8 @@ const useApiMutationID = <Variables = any, Response = any, Error = any>(
     const mutation = useMutation<AxiosResponse<Response>, Error, Variables>(
         async ({ id, data }: any) =>
             await api[type](`${url}/${id}`, data, {
-                params,
                 signal: abortController.signal,
+                params,
             }),
         {
             ...options,

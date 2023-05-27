@@ -4,10 +4,11 @@ import useApi from '@/hooks/useApi';
 import { BOOKS } from '@/constans/api.const';
 import { parseDataArray } from '@/utils/methods';
 import BookItem from './component/BookItem';
-import { Add } from '@mui/icons-material';
+import { Add, Search } from '@mui/icons-material';
 import AddModal from './component/AddModal';
 import { IBook, IBookData } from '@/types/book.type';
 import EditModal from './component/EditModal';
+import SearchModal from './component/SearchModal';
 
 
 const Home: React.FC = () => {
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
 
 	const [addModal, setAddModal] = useState(false)
 	const [editModal, setEditModal] = useState(false)
+	const [searchModal, setSearchModal] = useState(false)
 	const [item, setItem] = useState<IBook | null>(null)
 
 	const books: IBookData[] = useMemo(() => {
@@ -31,10 +33,16 @@ const Home: React.FC = () => {
 		setEditModal(true)
 	}
 
+	const openSearchModal = () => {
+		setSearchModal(true)
+	}
 
 	return (
 		<Container sx={{ py: 4 }} maxWidth="xl">
 			<Box display="flex" justifyContent="right" sx={{ mb: 2 }}>
+				<Button variant="contained" startIcon={<Search />} sx={{ mr: 2 }} onClick={openSearchModal}>
+					Search Book
+				</Button>
 				<Button variant="contained" color="success" startIcon={<Add />} onClick={openAddModal}>
 					Add Book
 				</Button>
@@ -56,6 +64,7 @@ const Home: React.FC = () => {
 			}
 			{addModal && <AddModal onClose={setAddModal} refetch={refetch} />}
 			{(editModal && item) && <EditModal onClose={setEditModal} refetch={refetch} item={item} />}
+			{searchModal && <SearchModal onClose={setSearchModal} refetch={refetch} />}
 		</Container>
 	)
 }

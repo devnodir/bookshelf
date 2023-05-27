@@ -1,7 +1,6 @@
 import TextField from '@/components/form/TextField/TextField'
 import { BOOKS } from '@/constans/api.const'
 import { ISBN_PATTERN } from '@/constans/pattern.const'
-import useApiMutation from '@/hooks/useApiMutation'
 import useApiMutationID from '@/hooks/useApiMutationID'
 import { IBook } from '@/types/book.type'
 import { ISetState, IVoid, } from '@/types/helper.type'
@@ -52,7 +51,7 @@ const EditModal: React.FC<Props> = ({ onClose, refetch, item }) => {
 	const submit = ({ status, ...formData }: IFormData) => {
 		const data = {
 			book: formData,
-			status: parseFloat(status)
+			status: +status
 		}
 		mutate({ data, id: item.id }, {
 			onSuccess: (res) => {
