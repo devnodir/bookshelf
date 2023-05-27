@@ -23,6 +23,7 @@ interface IFormData {
 	author: string
 	published: string | number
 	pages: string | number
+	status: string | number
 }
 
 const EditModal: React.FC<Props> = ({ onClose, refetch, item }) => {
@@ -39,7 +40,8 @@ const EditModal: React.FC<Props> = ({ onClose, refetch, item }) => {
 			title: item.title,
 			author: item.author,
 			published: item.published,
-			pages: item.pages
+			pages: item.pages,
+			status: item.status
 		})
 	}, [item])
 
@@ -47,10 +49,10 @@ const EditModal: React.FC<Props> = ({ onClose, refetch, item }) => {
 		onClose(false)
 	}
 
-	const submit = (formData: IFormData) => {
+	const submit = ({ status, ...formData }: IFormData) => {
 		const data = {
 			book: formData,
-			status: 1
+			status: parseFloat(status)
 		}
 		mutate({ data, id: item.id }, {
 			onSuccess: (res) => {
@@ -97,15 +99,25 @@ const EditModal: React.FC<Props> = ({ onClose, refetch, item }) => {
 						margin="normal"
 						label="Pages"
 						name="pages"
+						type="number"
 						control={control}
-						rules={{ required: "Please enter pages" }}
+						rules={{ required: "Please enter pages", valueAsNumber: true }}
 					/>
 					<TextField
 						margin="normal"
 						label="Published"
 						name="published"
 						control={control}
-						rules={{ required: "Please enter published" }}
+						type="number"
+						rules={{ required: "Please enter published", valueAsNumber: true }}
+					/>
+					<TextField
+						margin="normal"
+						label="Status"
+						name="status"
+						control={control}
+						type="number"
+						rules={{ required: "Please enter published", valueAsNumber: true }}
 					/>
 					<LoadingButton
 						loading={isLoading}

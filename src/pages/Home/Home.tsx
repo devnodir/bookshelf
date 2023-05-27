@@ -44,7 +44,7 @@ const Home: React.FC = () => {
 					<Grid container spacing={4}>
 						{books.map((item) => (
 							<Grid item key={item.book.id} xs={8} sm={4} md={3} lg={2}>
-								<BookItem item={item.book} onEdit={openEditModal} refetch={refetch} />
+								<BookItem item={{ ...item.book, status: item.status }} onEdit={openEditModal} refetch={refetch} />
 							</Grid>
 						))}
 					</Grid> :
