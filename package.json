@@ -1,0 +1,34 @@
+{
+  "name": "bookshelf",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Nodirbek Abdunazarov",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/lab": "^5.0.0-alpha.131",
+    "@mui/material": "latest",
+    "axios": "^1.4.0",
+    "md5": "^2.3.0",
+    "notistack": "^3.0.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-hook-form": "^7.44.1"
+  },
+  "devDependencies": {
+    "@types/md5": "^2.3.2",
+    "@types/node": "^20.2.5",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}
