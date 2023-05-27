@@ -15,12 +15,16 @@
     "@mui/icons-material": "latest",
     "@mui/lab": "^5.0.0-alpha.131",
     "@mui/material": "latest",
+    "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "md5": "^2.3.0",
     "notistack": "^3.0.1",
     "react": "latest",
     "react-dom": "latest",
-    "react-hook-form": "^7.44.1"
+    "react-hook-form": "^7.44.1",
+    "react-query": "^3.39.3",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.2"
   },
   "devDependencies": {
     "@types/md5": "^2.3.2",
